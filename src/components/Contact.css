@@ -1,0 +1,79 @@
+/*contact page*/
+.container_contact {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  /* .contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  } */
+  
+  .form-column, .info-column {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .sendForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  input, textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .sendButton {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ef233c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  
+  .sendButton:hover {
+    background-color: #d90429;
+  }
+  
+  .info-column p, .info-column a {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .map-box {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .map-box iframe {
+    border: 0;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .contact-section {
+      flex-direction: column;
+    }
+  
+    .form-column, .info-column {
+      margin-bottom: 20px;
+    }
+  }

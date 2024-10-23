@@ -1,0 +1,193 @@
+.properties-page {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+}
+
+.filter-container {
+  
+  background-color: #f7f7f7;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.property-listings {
+  flex: 0.7;
+}
+
+.filter-container select, .filter-container input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.property-listings h2 {
+  margin-bottom: 20px;
+}
+
+.property-listings .property-card {
+  margin-bottom: 20px;
+}
+
+
+.properties-landing {
+    /* background-image: url('img/image.jpg');  Add your background image */
+    background-color: #1A202C;
+     background-size: cover;
+     background-position: center;
+     min-height: 30vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: relative;
+   }
+   
+   .properties-landing .overlay {
+    /* background-color: rgba(0, 0, 0, 0.4);  Dark overlay for text contrast */
+     position: absolute;
+     
+   
+   }
+   
+   .properties-landing .overlay .content {
+     text-align: center;
+     position: relative;
+     z-index: 2;
+     color: #ffffff;
+     z-index: 1;
+     padding: 20px;
+     
+   }
+   
+   .properties-landing .overlay .content p {
+     font-size: 1.2rem;
+     margin-bottom: 20px;
+   }
+   
+   /* -----------Search Bar Styling */
+   /* Search Bar Container Styling */
+   .properties-landing .overlay .content .search-bar-container {
+     display: flex;
+     padding: 20px;
+     justify-content: center;
+     align-items: center;
+     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+     border-radius: 20px;
+     box-shadow: 0 4px 8px hwb(0 0% 100% / 0.1);
+     max-width: 800px;
+     width: 100%;
+     margin-top: 20px;
+   }
+   
+   
+   /* Styling the input fieldslvkfkv;slvd;sldv */
+   .properties-landing .overlay .content .search-bar-container .search-input {
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     padding: 10px;
+     margin-right: 10px;
+     flex: 1;
+     font-size: 16px;
+     
+   }
+   
+   .properties-landing .overlay .content .search-bar-container .search-input:hover{
+     background-color: whitesmoke;
+     
+   }
+   
+   /* Search Button Styling */
+   .search-btn {
+     background-color: #ef233c;
+     color: white ;
+     border: none;
+     padding: 10px 30px;
+     display: flex;
+     align-items: center;
+     border-radius: 4px;
+     cursor: pointer;
+     font-size: 16px;
+   }
+   
+   .search-btn:hover {
+     background-color: #d90429;
+     
+   }
+   
+   /* Search Icon */
+   .search-icon {
+     width: 20px;
+     height: 20px;
+     margin-right: 2px;
+     color: #ccc solid 3px;
+     justify-content: center;
+   }
+   
+   /* ??????????????????//*/
+   .search-icon img{
+     color: whitesmoke solid 3px;
+     justify-content: center;
+     
+   }
+
+   /*    the search bar ends is here */
+   
+   /* Responsive Design */
+   @media (max-width: 768px) {
+     .properties-landing .overlay .content .search-bar-container {
+         flex-direction: column;
+         padding: 25px;
+     }
+   
+     .properties-landing .overlay .content h1 {
+       font-size: 2.5rem;
+   }
+   
+   .properties-landing .overlay .content p {
+       font-size: 1rem;
+   }
+   
+     .search-input {
+         margin-bottom: 10px;
+         width: 100%;
+     }
+   
+     .search-btn {
+         width: 100%;
+     }
+   }
+   
+
+   @media (max-width: 1024px) {
+    .properties-page {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .filter-container,
+    .property-listings {
+      flex: 1;
+      width: 100%;
+    }
+  }
+  
+  /* For mobile phones */
+  @media (max-width: 768px) {
+    .filter-container {
+      padding: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .filter-container {
+      padding: 10px;
+    }
+  
+    .property-listings h2 {
+      font-size: 1.5rem;
+    }
+  }

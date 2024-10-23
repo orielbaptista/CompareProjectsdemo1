@@ -1,3 +1,25 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+
+
+
+
+/* 
+//V the app is where the home and other pages cneter connectted at 
 .App {
   text-align: center;
 }
@@ -35,4 +57,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
