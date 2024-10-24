@@ -40,7 +40,7 @@ function PropertyCard({ property, addToCompare, goToComparePage, onRemove }) {
       <div className="property-details">
         <h1 className="property-title">{property.title}</h1>
         <h2 className="property-price">{property.price}</h2>
-        <p className="property-description">{property.description}</p>
+        {/* <p className="property-description">{property.description}</p> */}
         <p className="property-agent">{property.agent}</p>
         <div className="property-info">
           <div className="info-item">

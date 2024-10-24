@@ -5,15 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import Gallery from '../components/Gallery'; 
 import Contact from '../components/Contact'; 
 import SearchBar from '../components/SearchBar';
+import HeroSection from '../components/HeroSection';
+import Button from '../components/Button';
 
 function Home() {
 
-  const navigate = useNavigate(); // Initialize the navigate hook
-
-  // Function to handle the button click
-  const handleViewPropertiesClick = () => {
-    navigate('/properties'); // Navigate to the properties page
-  };
+  
   return (
     <div>
 
@@ -30,7 +27,14 @@ function Home() {
         <div class="content">
             <h1>Find Your Dream Property</h1>
             <p>Explore the finest properties in your area with us.</p>
-            <a onClick={handleViewPropertiesClick}  className="btn">Compare Now</a>
+            {/* <a onClick={handleViewPropertiesClick}  className="btn">Compare Now</a> */}
+
+            <section>
+              <Button />
+            </section>
+
+
+            
 
             <div>
               <SearchBar />
@@ -49,16 +53,9 @@ function Home() {
         
       </section>
 
-
       
 
-      {/* About Section */}
-      <section id='about' className="about-section">
-        <header className="about-header">
-          <h1>About Us</h1>
-          <p>Learn more about who we are and what we do.</p>
-        </header>
-      </section>
+
 
       {/* Team Section */}
       <section className="team-section">
@@ -69,6 +66,24 @@ function Home() {
           </div>
         </div>
       </section>
+
+
+
+      
+
+      
+      {/* <section id='about' className="about-section">
+        <header className="about-header">
+          <h1>About Us</h1>
+          <p>Learn more about who we are and what we do.</p>
+        </header>
+      </section> */}
+
+      <section>
+        <HeroSection />
+      </section>
+
+      
 
       {/* Gallery Section */}
       <section>

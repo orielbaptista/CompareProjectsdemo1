@@ -61,7 +61,26 @@ function Properties({ properties = [], addToCompare, compareList }) { //debug: f
   });
 
   return (
+
+    
+    
+
+
+
+
+
     <div className="properties-page">
+
+      {/* <div className="banner">
+    <div className="banner-content">
+      <h1>Find Your Perfect Property</h1>
+      <input type="text" className="search-bar" placeholder="Search by location, property type, etc." />
+    </div>
+  </div> */}
+
+
+
+      
       {/* Filter Section */}
       <div className="filter-container">
         <h2>Filter Properties</h2>
@@ -120,11 +139,19 @@ function Properties({ properties = [], addToCompare, compareList }) { //debug: f
         </div>
       </div>
 
-      {/* Properties and Compare Section */}
+
+
+
+
+
+      
       <div className="property-listings-container">
         <h2>Available Properties</h2>
 
+        
+
         <div className="property-listings">
+          
           {/* Render filtered properties */}
           {Array.isArray(filteredProperties) && filteredProperties.length > 0 ? (
             filteredProperties.map((property, index) => (
@@ -140,6 +167,7 @@ function Properties({ properties = [], addToCompare, compareList }) { //debug: f
             <p>No properties found</p>
           )}
         </div>
+        
       </div>
     </div>
   );
