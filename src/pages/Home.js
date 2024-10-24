@@ -15,11 +15,11 @@ function Home() {
     <div>
 
       {/* Banner Section */}
-      {/* <div className="banner">
+      <div className="banner">
         <p className="moving-text">
           Compare now! | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Compare now! | Lorem ipsum dolor sit amet...
         </p>
-      </div> */}
+      </div>
 
       {/* Landing Section */}
       <section id='home' className="landing-section">
