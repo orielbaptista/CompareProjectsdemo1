@@ -40,7 +40,7 @@ function Header() {
           {/* Link the Home and About sections as anchor links */}
           <div className="nav-center">
           <li><button className="nav-link" onClick={() => handleScrollToSection('home')}>Home</button></li>
-          <li><button className="nav-link" onClick={() => handleScrollToSection('about')}>About</button></li>
+          {/* <li><button className="nav-link" onClick={() => handleScrollToSection('about')}>About</button></li> */}
           <li><Link to="/properties" className="nav-link" >Property</Link></li>{/* Use Link for Property and Compare pages */}
           <li><button className="nav-link" onClick={() => handleScrollToSection('contact')}>Contact</button></li>
           </div>

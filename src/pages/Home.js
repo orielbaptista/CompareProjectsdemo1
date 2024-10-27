@@ -6,55 +6,52 @@ import Gallery from '../components/Gallery';
 import Contact from '../components/Contact'; 
 import SearchBar from '../components/SearchBar';
 import HeroSection from '../components/HeroSection';
-import Button from '../components/Button';
+//import Button from '../components/Button';
 
 function Home() {
 
-  
+  // const navigate = useNavigate();
+
+  // const handleViewPropertiesClick = () => {
+  // navigate('/properties');
+
+     const navigate = useNavigate();
+    const handleViewPropertiesClick = () => {
+      navigate('/properties');
+    };
+    
+
   return (
     <div>
 
       {/* Banner Section */}
-      <div className="banner">
+      {/* <div className="banner">
         <p className="moving-text">
           Compare now! | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Compare now! | Lorem ipsum dolor sit amet...
         </p>
-      </div>
+      </div> */}
 
       {/* Landing Section */}
-      <section id='home' className="landing-section">
-        <div className="overlay">
-        <div class="content">
-            <h1>Find Your Dream Property</h1>
-            <p>Explore the finest properties in your area with us.</p>
-            {/* <a onClick={handleViewPropertiesClick}  className="btn">Compare Now</a> */}
+<section id="home" className="landing-section">
+      <div className="overlay">
+        <div className="content">
+          <h1>Find Your Dream Property</h1>
+          <p>Explore the finest properties in your area with us.</p>
 
-            <section>
-              <Button />
-            </section>
+          {/* Button */}
+          <button className='home-button' onClick={handleViewPropertiesClick}>
+            Click Me
+          </button>
+          
 
-
-            
-
-            <div>
+          {/* Search Bar */}
+          <div>
               <SearchBar />
             </div>
-
-
-
+          
         </div>
-
-
-        
-
-
-        </div>
-
-        
-      </section>
-
-      
-
+      </div>
+    </section>
 
 
       {/* Team Section */}
@@ -67,18 +64,7 @@ function Home() {
         </div>
       </section>
 
-
-
       
-
-      
-      {/* <section id='about' className="about-section">
-        <header className="about-header">
-          <h1>About Us</h1>
-          <p>Learn more about who we are and what we do.</p>
-        </header>
-      </section> */}
-
       <section>
         <HeroSection />
       </section>

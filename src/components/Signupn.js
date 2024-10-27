@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css'; // Assuming you will create an Auth.css file for styles
 
 const Signup = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -18,6 +19,16 @@ const Signup = () => {
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSignup}>
         <h2>Sign Up</h2>
+        <div className="form-group">
+          <label>Name</label>
+          <input 
+            type="text" 
+            placeholder="Username" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            required 
+          />
+        </div>
         <div className="form-group">
           <label>Email ID</label>
           <input 

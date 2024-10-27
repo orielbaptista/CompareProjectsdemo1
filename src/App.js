@@ -10,7 +10,6 @@ import Properties from './pages/Properties';
 import PropertyPage from './components/PropertyPage';  // Import PropertyPage
 import Login from './components/Loginn';
 import Signup from './components/Signupn';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import propertiesData from './data/propertiesData';
 
