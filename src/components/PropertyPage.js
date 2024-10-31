@@ -1,44 +1,71 @@
-// src/pages/PropertyPage.js
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import propertiesData from '../data/propertiesData';
-
-// import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper and SwiperSlide
-// import 'swiper/css'; // Correct import for Swiper styles
-// import 'swiper/css/navigation'; // For navigation buttons (optional, if you're using them)
-// import 'swiper/css/pagination'; // For pagination (optional, if you're using it)
-// import { Navigation } from 'swiper/modules';
-
-// import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faRulerCombined, faBed, faBath, faCar, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-//import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import './PropertyPage.css'
+import {
+  faMapMarkerAlt,
+  faCalendarAlt,
+  faSwimmingPool,
+  faDumbbell,
+  faParking,
+  faWifi,
+  faSnowflake,
+  faShieldAlt,
+  faChild,
+  faTree,
+  faLightbulb,
+  faSchool,
+  faUtensils,
+  faShoppingCart,
+  faBus,
+} from '@fortawesome/free-solid-svg-icons';
+import './PropertyPage.css';
+import Carousel from './Carousel';
+import CaroforPage
+ from './CaroforPage';
 
 function PropertyPage() {
-  // Get the property ID from the URL parameters
   const { id } = useParams();
-  
-  // Find the property in the propertiesData array by ID
   const property = propertiesData.find((property) => property.id === parseInt(id));
- 
-  // Manage the active tab state
   const [activeTab, setActiveTab] = useState('overview');
-  
+
   if (!property) {
     return <h2>Property not found</h2>;
   }
 
+  // Define icons for amenities
+  const amenitiesIcons = {
+    swimmingPool: faSwimmingPool,
+    gym: faDumbbell,
+    parking: faParking,
+    wifi: faWifi,
+    'children Play Area': faChild,
+    airConditioning: faSnowflake,
+    garden: faTree,
+    'Private Garden': faTree,
+    security: faShieldAlt,
+    'Power Backup': faLightbulb,
+  };
+
+  // Define icons for facilities
+  const facilitiesIcons = {
+    'Nearby Schools': faSchool,
+    Restaurants: faUtensils,
+    'Shopping Centers': faShoppingCart,
+    'Public Transport': faBus,
+    'Private Garden': faTree,
+  };
+
   return (
     <div className="property-page">
-    {/* Header Section */}
-    <div className="property-header">
+      {/* Header Section */}
+      <div className="property-header">
         <div className="left-section">
           <h1 className="property-title">{property.title}</h1>
           <p className="property-location">
             <FontAwesomeIcon icon={faMapMarkerAlt} /> {property.location}
           </p>
+          <p className="property-agent">{property.agent}</p>
         </div>
         <div className="right-section">
           <h2 className="property-price">₹{property.price}</h2>
@@ -47,34 +74,18 @@ function PropertyPage() {
           </p>
         </div>
       </div>
+     
 
-
-      {/* Image Carousel Section */}
-      {/* <div className="property-image-container">
-        <Swiper
-          spaceBetween={10}
-          slidesPerView={1}
-          loop={true}
-          navigation={true}
-          modules={[Navigation]}// Make sure Navigation is imported and used properly here
-        >
-          {property.images.map((image, index) => (
-            <SwiperSlide key={index}>
-              <img src={image} alt={`Property Image ${index + 1}`} className="property-image" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div> */}
-
-   {/* Image and Contact Section */}
-   <div className="property-details-container">
+      {/* Image and Contact Section */}
+      <div className="property-details-container">
         <div className="property-image-container">
-          <img src={property.image} alt={property.title} className="property-image" />
+          {/* <img src={property.image} alt={property.title} className="property-image" /> */}
+          <CaroforPage media={property.media} />
         </div>
 
         {/* Contact Seller Section */}
         <div className="contact-seller">
-          {/* <h3>Contact Seller</h3> */}
+          <h5>Contact Seller</h5>
           <form className="contact-form">
             <div className="form-group">
               <label htmlFor="name">Name</label>
@@ -93,32 +104,17 @@ function PropertyPage() {
         </div>
       </div>
 
-    {/* Tab Navigation */}
-    <div className="tabs-container">
-        <button
-          onClick={() => setActiveTab('overview')}
-          className={activeTab === 'overview' ? 'active' : ''}
-        >
-          Overview
-        </button>
-        <button
-          onClick={() => setActiveTab('description')}
-          className={activeTab === 'description' ? 'active' : ''}
-        >
-          Description
-        </button>
-        <button
-          onClick={() => setActiveTab('amenities')}
-          className={activeTab === 'amenities' ? 'active' : ''}
-        >
-          Amenities
-        </button>
-        <button
-          onClick={() => setActiveTab('facilities')}
-          className={activeTab === 'facilities' ? 'active' : ''}
-        >
-          Facilities
-        </button>
+      {/* Tab Navigation */}
+      <div className="tabs-container">
+        {['overview', 'description', 'amenities', 'facilities', 'gallery', 'location', 'floorplan'].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={activeTab === tab ? 'active' : ''}
+          >
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+          </button>
+        ))}
       </div>
 
       {/* Tab Content */}
@@ -141,20 +137,56 @@ function PropertyPage() {
         )}
         {activeTab === 'amenities' && (
           <div className="tab-section">
-            <ul>
+            <ul className="amenities-list">
               {property.amenities.map((amenity, index) => (
-                <li key={index}>{amenity}</li>
+                <li key={index} className="amenity-item">
+                  <FontAwesomeIcon icon={amenitiesIcons[amenity]} /> {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
+                </li>
               ))}
             </ul>
           </div>
         )}
         {activeTab === 'facilities' && (
           <div className="tab-section">
-            <ul>
+            <ul className="facilities-list">
               {property.facilities.map((facility, index) => (
-                <li key={index}>{facility}</li>
+                <li key={index} className="facility-item">
+                  <FontAwesomeIcon icon={facilitiesIcons[facility]} /> {facility.charAt(0).toUpperCase() + facility.slice(1)}
+                </li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {activeTab === 'gallery' && (
+          <div className="tab-section">
+            <Carousel images={property.galleryImages} />
+          </div>
+        )}
+        
+        {activeTab === 'location' && (
+          <div className="tab-section location-section">
+          <div className="map-container">
+            <iframe
+              src={property.mapLink}
+              width="100%"
+              height="300"
+              style={{ border: 0, borderRadius: '8px' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div className="address-container">
+            <p><strong>Address:</strong></p>
+            <p>{property.address}</p>
+          </div>
+        </div>
+        )}
+
+        {activeTab === 'floorplan' && (
+          <div className="tab-section">
+            {/* <p>{property.description}</p> */}
           </div>
         )}
       </div>

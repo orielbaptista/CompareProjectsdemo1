@@ -35,7 +35,7 @@ function PropertyCard({ property, addToCompare, goToComparePage, onRemove }) {
 
       <div className="card-image-container">
         <span className="badge badge-pill badge-danger">{property.status}</span>
-        <img src={property.image} alt="Property" />
+        <img src={property.coverimage} alt="Property" />
       </div>
       <div className="property-details">
         <h1 className="property-title">{property.title}</h1>

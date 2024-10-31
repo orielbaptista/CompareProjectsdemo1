@@ -32,7 +32,7 @@ function Home() {
       </div> */}
 
       {/* Landing Section */}
-<section id="home" className="landing-section">
+<section id="homee" className="landing-section">
       <div className="overlay">
         <div className="content">
           <h1>Find Your Dream Property</h1>
@@ -40,7 +40,7 @@ function Home() {
 
           {/* Button */}
           <button className='home-button' onClick={handleViewPropertiesClick}>
-            Click Me
+            Compare Now
           </button>
           
 

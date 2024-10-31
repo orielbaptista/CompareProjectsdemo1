@@ -28,7 +28,7 @@ function Header() {
   
 
   return (
-    <header className="home">
+    <header  id='home' className="home">
       <nav className="navbar">
         <div className="logo">
         <img className="logo-img" src={logoo} alt="compareProjects" />
@@ -38,6 +38,7 @@ function Header() {
 
         <ul className={`nav-items ${isMenuOpen ? 'show-menu' : ''}`} id="nav-items">
           {/* Link the Home and About sections as anchor links */}
+
           <div className="nav-center">
           <li><button className="nav-link" onClick={() => handleScrollToSection('home')}>Home</button></li>
           {/* <li><button className="nav-link" onClick={() => handleScrollToSection('about')}>About</button></li> */}

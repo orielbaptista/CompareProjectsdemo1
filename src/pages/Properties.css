@@ -34,14 +34,18 @@
   outline: none;
 } */
 
-
+.property-listings-container{
+  
+  
+  
+}
 
 .properties-page {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
   padding: 80px;
-  justify-content: ;
+  /* justify-content: ; */
 }
 
 .filter-container {

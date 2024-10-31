@@ -8,8 +8,8 @@ import Home from './pages/Home';         // Import the Home component
 import Compare from './pages/Compare';   
 import Properties from './pages/Properties';
 import PropertyPage from './components/PropertyPage';  // Import PropertyPage
-import Login from './components/Loginn';
-import Signup from './components/Signupn';
+import Login from './components/Login';
+import Signup from './components/Signup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import propertiesData from './data/propertiesData';
 

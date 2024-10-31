@@ -1,204 +1,287 @@
 .property-page {
-    padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    max-width: 1200px;
-    color: #333;
-  }
-
-  /* Property Header Section */
-.property-header {
-    display: flex;
-    max-width: 60%;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 10px 20px; /* Reduced padding for a shorter header */
-    background-color: #edf2f4;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: auto; /* Makes the header shorter */
-  }
-
-  .left-section{
-    flex: 2;
-  }
-
-  .property-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ef233c; /* Main complementary red color */
-    margin-bottom: 8px;
-  }
-  
-  .property-location {
-    font-size: 14px;
-    color: #8d99ae; /* Muted complementary color for location */
-    display: flex;
-    align-items: center;
-  }
-  
-  .property-location svg {
-    margin-right: 5px; /* Space between icon and text */
-  }
-  /* Right Section: Price and Availability */
-.right-section {
-    flex: 1;
-    text-align: right;
-  }
-  
-  
-  .property-price {
-    font-size: 22px;
-    font-weight: bold;
-    color: #d90429;
-    margin-bottom: 4px;
-  }
-  
-  .property-availability {
-    font-size: 14px;
-    color: #8d99ae; /* Subtle color for availability */
-    display: flex;
-    align-items: center;
-  }
-  
-  .property-availability svg {
-    margin-right: 5px;
-  }
-
-
-  
-  /* Make the Header Responsive */
-  @media (max-width: 768px) {
-    .property-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .property-price-info {
-      text-align: left;
-      margin-top: 10px;
-    }
-  
-    .property-actions {
-      justify-content: flex-start;
-      margin-top: 10px;
-    }
-  }
-  .property-details-container {
-    display: flex; /* Enable flexbox */
-    justify-content: space-between; /* Space between the image and the form */
-    margin: 20px 0; /* Optional: Add some margin around */
-  }
-
-  /* Image Container */
-.property-image-container {
-    max-width: 60%;
-    margin-bottom: 20px auto;
-    flex: 1; /* This will allow the image container to take up remaining space */
-    margin-right: 20px; /* Space between image and form */
-    
-  }
-  
-  .property-image {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-/* contact seller  part*/
-.contact-seller {
-    width: 300px; /* Set a fixed width for the contact form */
-    background-color: #f9f9f9; /* Optional: Background color */
-    padding: 20px; /* Add some padding */
-    border-radius: 5px; /* Optional: Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow */
-  }
-  
-  .contact-form {
-    display: flex;
-    flex-direction: column; /* Arrange form elements vertically */
-  }
-  
-  .form-group {
-    margin-bottom: 15px; /* Space between form groups */
-  }
-  
-  .submit-button {
-    background-color: #ef233c; /* Your button color */
-    color: #fff; /* Text color */
-    padding: 10px; /* Button padding */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor */
-  }
-  
-  .submit-button:hover {
-    background-color: #d90429; /* Darker color on hover */
-  }
-  
-  
-  /* Tabs Styling */
-  .tabs-container {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
-  justify-content: flex-start; /* Aligns tabs to the left */
-  gap: 10px; /* Space between the buttons */
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1200px;
+  color: #333;
+}
+
+/* Property Header Section */
+.property-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 20px;
+  background-color: #edf2f4;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-section {
+  flex: 2;
+}
+
+.property-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ef233c;
+  margin-bottom: 8px;
+}
+
+.property-location {
+  font-size: 14px;
+  color: #8d99ae;
+  display: flex;
+  align-items: center;
+}
+
+.right-section {
+  flex: 1;
+  text-align: right;
+}
+
+.property-price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #d90429;
+  margin-bottom: 4px;
+}
+
+.property-availability {
+  font-size: 14px;
+  color: #8d99ae;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .property-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .property-details-container {
+    flex-direction: column; /* Stack image and contact form */
+    align-items: center; /* Center align */
+  }
+
+  .property-image-container {
+    max-width: 100%; /* Make image responsive */
+    margin-bottom: 20px; /* Margin at the bottom for spacing */
+  }
+
+  .contact-seller {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .tabs-container {
+    width: 100%; /* Full width for tabs */
+  }
+
+  .tab-content {
+    max-width: 100%; /* Full width for tab content */
+  }
+}
+
+.property-details-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.property-image-container {
+  max-width: 60%;
+  margin-right: 20px;
+}
+
+.property-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Seller Part */
+.contact-seller {
+  width: 300px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.submit-button {
+  background-color: #ef233c;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #d90429;
+}
+
+/* Tabs Styling */
+.tabs-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
   margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
-  width: 60%; /* Make the tab section more compact */
-  margin-top: 20px;
-  }
-  
-  .tabs-container button {
-    background-color: #8d99ae;
-    font-size: 14px;
-    border: none;
-    padding: 9px 15px;
-    margin-right: 2px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .tabs-container button.active {
-    background-color: #2b2d42;
-    border-bottom: 2px solid #d90429;
-  }
-  
-  .tabs-container button:hover {
-    background-color: #2b2d42;
-  }
-  
-  .tab-content {
-  max-width: 60%; /* Restrict the content width for compact look */
+}
+
+.tabs-container button {
+  background-color: #8d99ae;
+  font-size: 14px;
+  border: none;
+  padding: 9px 15px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tabs-container button.active {
+  background-color: #2b2d42;
+  border-bottom: 2px solid #d90429;
+}
+
+.tabs-container button:hover {
+  background-color: #2b2d42;
+}
+
+.tab-content {
+  max-width: 60%;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+}
+
+.tab-section {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.amenities-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-size: 16px;
   color: #333;
-  }
+}
+
+.amenity-item svg {
+  margin-right: 5px; /* Space between icon and text */
+  color: #ef233c; /* Change this to your preferred icon color */
+}
+
+
+.facilities-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.facility-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.facility-item svg {
+  margin-right: 5px; /* Space between icon and text */
+  color: #ef233c; /* Change this to your preferred icon color */
+}
+.property-header .property-agent{
+    font-size: 15px;
+    padding: 5px 10px;
+    margin-bottom: 10px ;
+    color: rgb(110, 127, 144);
+    background-color: #0c09090f;
+    max-width: fit-content;
+    transition: background-color 0.3s ease;
+}
+
+.property-header .property-agent:hover{
   
-  .tab-section {
-    padding: 20px;
-    background-color: #edf2f4;
-    border-radius: 8px;
-  }
+  background-color: #0c09091c;
   
-  .tab-section p,
-  .tab-section ul {
-    margin: 10px 0;
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .tab-section ul li {
-    margin-bottom: 10px;
-  }
-  
-  
-  
+}
+
+/* PropertyPage.css */
+
+.location-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.map-container {
+  max-width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.address-container {
+  font-size: 16px;
+  color: #333;
+}
+
+.address-container p {
+  margin: 4px 0;
+}
+
+.address-container strong {
+  font-weight: 600;
+}
+
+/* Carousel.css (or wherever your CSS is located) */
+.floorplan-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between images */
+  justify-content: center; /* Center the gallery */
+}
+
+.floorplan-image {
+  width: 100%; /* Adjust width as necessary */
+  max-width: 200px; /* Limit maximum width */
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.floorplan-image:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+

@@ -3,6 +3,7 @@ import PropertyCard from '../components/PropertyCard';
 import './Properties.css';
 //import propertiesData from '../data/propertiesData';
 //import { useNavigate } from 'react-router-dom';
+//import Filter from '../components/Filter';
 
 function Properties({ properties = [], addToCompare, compareList }) { //debug: fallback value for properties if undefined
   const [filters, setFilters] = useState({
@@ -16,26 +17,6 @@ function Properties({ properties = [], addToCompare, compareList }) { //debug: f
     minPrice: '',  // Add minPrice
     maxPrice: '', // Add maxPrice (you can adjust it to a higher default value if needed)
   });
-
-  // const [compareList, setCompareList] = useState([]);
-  // const navigate = useNavigate();
-
-  // Function to add a property to the compare list
-  // const addToCompare = (property) => {
-  //   if (!compareList.some((item) => item.id === property.id)) {
-  //     const newCompareList = [...compareList, property];
-  //     setCompareList(newCompareList);
-  //     console.log("Updated Compare List:", newCompareList); 
-  //   }else{
-  //     console.log("Property already in compare list", property);
-  //   }
-  // };
-
-  //Function to navigate to the compare page
-  // const goToComparePage = () => {
-  //   console.log("Navigate to Compare Page with Compare List:", compareList);
-  //   navigate('/compare', { state: { compareList } });
-  // };
 
   // Handles filter changes
   const handleFilterChange = (e) => {
@@ -71,36 +52,31 @@ function Properties({ properties = [], addToCompare, compareList }) { //debug: f
 
     <div className="properties-page">
 
-      {/* <div className="banner">
-    <div className="banner-content">
-      <h1>Find Your Perfect Property</h1>
-      <input type="text" className="search-bar" placeholder="Search by location, property type, etc." />
-    </div>
-  </div> */}
+      
 
-
+      ?
 
       
       {/* Filter Section */}
       <div className="filter-container">
         <h2>Filter Properties</h2>
 
-        {/* State filter */}
+        
         <select name="state" value={filters.state} onChange={handleFilterChange}>
           <option value="">Select State</option>
           <option value="Kolkata">Kolkata</option>
           <option value="Mumbai">Mumbai</option>
-          {/* Add more options for states */}
+          
         </select>
 
-        {/* Property type filter */}
+        
         <select name="type" value={filters.type} onChange={handleFilterChange}>
           <option value="">Property Type</option>
           <option value="apartment">Apartment</option>
           <option value="villa">Villa</option>
         </select>
 
-        {/* Bedrooms filter */}
+        
         <input
           type="number"
           name="bedrooms"
@@ -109,17 +85,17 @@ function Properties({ properties = [], addToCompare, compareList }) { //debug: f
           onChange={handleFilterChange}
         />
 
-        {/* Status filter */}
+        
         <select name="status" value={filters.status} onChange={handleFilterChange}>
           <option value="">Status</option>
           <option value="For Sale">For Sale</option>
           <option value="For Rent">For Rent</option>
         </select>
 
-        {/* Price range */}
+        
         <div>
           <h3>Price range:</h3>
-          {/* Min Price filter */}
+          
           <input
             type="number"
             name="minPrice"
@@ -128,7 +104,7 @@ function Properties({ properties = [], addToCompare, compareList }) { //debug: f
             onChange={handleFilterChange}
           />
 
-          {/* Max Price filter */}
+          
           <input
             type="number"
             name="maxPrice"
@@ -147,9 +123,6 @@ function Properties({ properties = [], addToCompare, compareList }) { //debug: f
       
       <div className="property-listings-container">
         <h2>Available Properties</h2>
-
-        
-
         <div className="property-listings">
           
           {/* Render filtered properties */}
