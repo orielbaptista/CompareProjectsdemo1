@@ -7,16 +7,18 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setError('');//reset error message before Api calls
     try {
-      await axios.post('http://localhost:3000/signup', { name, email, password });
+      await axios.post('http://localhost:3000/api/auth/signup', { name, email, password });
       navigate('/login'); // Redirect to login page after sign up
     } catch (error) {
-      console.error('Signup failed:', error.response.data);
-      // Handle signup error
+      console.error('Signup failed:', error.response?.data); 
+      setError('Signup failed: ' + (error.response?.data.message || 'Unknown error'));      // Handle signup error
     }
   };
   
@@ -25,6 +27,7 @@ const Signup = () => {
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSignup}>
         <h2>Sign Up</h2>
+        {error && <div className="error">{error}</div>} {/* Display error if exists */}
         <div className="form-group">
           <label>Name</label>
           <input 

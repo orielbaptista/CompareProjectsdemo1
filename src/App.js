@@ -12,7 +12,9 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import propertiesData from './data/propertiesData';
-
+import ProtectedRoute from './components/ProtectedRoute';
+import DevelopersPage from './components/DevelopersPage';
+//import developersRoutes from './backend/routes/developersRoutes';
 
 function App() {
   const [compareList, setCompareList] = useState(() => {
@@ -49,6 +51,14 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           {/* Add route for individual property pages */}
           <Route path="/property/:id" element={<PropertyPage />} />
+          {/* Protect the Developers Page route */}
+          <Route
+          path="/developers"element={
+            <ProtectedRoute>
+              <DevelopersPage />
+            </ProtectedRoute>
+          } />
+
         </Routes>
 
         <Footer /> {/* Render the common Footer across all pages */}

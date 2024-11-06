@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import developers from '../components/DevelopersPage'
+//import developers from '../components/DevelopersPage'
 import './Auth.css'; // Assuming you will create an Auth.css file for styles
 import axios from 'axios';
 
 const Login= () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/src/components/login', { name, password });
+      const response = await axios.post('http://localhost:3000/api/auth/login', { name, password });
       // Store the token (you may use localStorage or context)
       //check for successful response
       if(response.data.token){
@@ -23,6 +24,7 @@ const Login= () => {
       if (error.response) {
         // The request was made and the server responded with a status code
         console.error('Login failed:', error.response.data);
+        setError('Login failed: ' + (error.response.data.message || 'Unknown error')); // Set error message //this is happening
       } else if (error.request) {
         // The request was made but no response was received
         console.error('Login failed: No response received');
@@ -44,6 +46,7 @@ const Login= () => {
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleLogin}>
         <h2>Login</h2>
+        {error && <div className="error">{error}</div>} {/* Display error if exists */}
         <div className="form-group">
           <label>Username</label>
           <input 
