@@ -19,13 +19,19 @@
     color: #333;
   }
   
+
+
+
+
+
+  
   
   /* Property card container */
- .property-card {
+.property-card {
   
     /* position: relative; */
     display: flex;
-    border: 1px solid #ddd;
+    border: 100px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -33,7 +39,6 @@
     max-width: 1200px;
     max-height: 350px;
     /* position: relative; */
-    background-color: #fff;
     cursor: pointer;
   }
 
@@ -263,6 +268,42 @@
 
 
   }
-  
-  
- 
+
+
+
+
+
+/* Default PropertyCard Styles */
+.property-card.default-card {
+  background-color: #fff; /* Default background */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+.property-card.default-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+/* compare card- propertycard */
+.property-card.compare-card {
+  background-color: #f9f9f9; /* Light background */
+  border: 2px dashed #ccc; /* Dashed border */
+  width: 300px; /* Fixed width for cards */
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 15px; /* Inner padding */
+  display: flex;
+  flex-direction: column; /* Stack content inside the card */
+  overflow: hidden; /* Prevent overflow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover effects */
+}
+

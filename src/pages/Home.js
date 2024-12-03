@@ -6,6 +6,7 @@ import Gallery from '../components/Gallery';
 import Contact from '../components/Contact'; 
 import SearchBar from '../components/SearchBar';
 import HeroSection from '../components/HeroSection';
+import CaroForHome from '../components/CaroForHome';
 //import Button from '../components/Button';
 
 function Home() {
@@ -33,6 +34,7 @@ function Home() {
 
       {/* Landing Section */}
 <section id="homee" className="landing-section">
+  
       <div className="overlay">
         <div className="content">
           <h1>Find Your Dream Property</h1>
@@ -53,13 +55,16 @@ function Home() {
       </div>
     </section>
 
+    
+
 
       {/* Team Section */}
       <section className="team-section">
         <div className="container">
           <div className="section-title">
-            <h1>Our Team</h1>
+            <h1>Featured Properties</h1>
             <p>We are a dedicated team, passionate about connecting you with your ideal property.</p>
+            <CaroForHome />
           </div>
         </div>
       </section>

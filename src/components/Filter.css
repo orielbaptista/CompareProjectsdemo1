@@ -1,38 +1,66 @@
+/* Filter.css */
 .filter-container {
-    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
     padding: 20px;
-    width: 300px;
-}
-
-.filter-item {
-    margin-bottom: 15px;
-}
-
-.filter-item label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.filter-item input[type="range"] {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 300px;
     width: 100%;
+    margin-bottom: 20px;
 }
 
-.filter-item select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-}
 
-button {
-    background-color: #007bff;
-    color: #fff;
+
+.clear-btn {
+    background-color: #ef233c;
+    color: #ffffff;
     padding: 10px 15px;
+    font-size: 1rem;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
     margin-top: 10px;
+    width: 100%;
 }
+/* Style the multi-select "bubbles" (selected options) */
+.filter-container .react-select__multi-value {
+    background-color: #ef233c;
+    border-radius: 20px;
+    color: white;
+    margin-right: 8px;
+    position: relative;
+    overflow: visible;
+  }
+  
+  .filter-container .react-select__multi-value__label {
+    padding: 0 10px;
+    font-size: 0.9rem;
+  }
+  
+  .filter-container .react-select__multi-value__remove {
+    background-color: transparent;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  
+  /* Style for the dropdown menu */
+  .filter-container .react-select__menu {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the dropdown options */
+  .filter-container .react-select__option {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
 
-button:hover {
-    background-color: #0056b3;
-}
+  .filter-container .react-select__option:hover {
+    background-color: #ef233c;
+    color: white;
+  }

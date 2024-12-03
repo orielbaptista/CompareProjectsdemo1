@@ -1,64 +1,19 @@
-/* banner */
-
-.banner {
-  width: 100%;
-  overflow: hidden;
-  padding: 5px 0 5px;
-  background-color: #eae2b7; /* Light cream background */
-  color: #003049; /* Dark blue text */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-}
-
-.moving-text {
-  white-space: nowrap;
-  display: inline-block;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #003049; /* Dark blue text */
-  animation: moveBanner 15s linear infinite;
-  letter-spacing: 1.5px;
-  margin: auto 0;
-}
-
-/* Keyframes for moving the text */
-@keyframes moveBanner {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-/* Hover effect to subtly darken text */
-.moving-text:hover {
-  color: #d62828; /* Dark red for hover effect */
-  transition: color 0.3s ease-in-out;
-}
-
-/* Optional hover for banner background */
-.banner:hover {
-  background-color: #fcbf49; /* Soft yellow-orange on hover */
-  transition: background-color 0.3s ease-in-out;
-}
-
-
-
-
 
 .landing-section {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
-  background-color: #003049;
-  /* background: url('your-background-image-url.jpg') no-repeat center center; */
+  height: 100vh; 
+  background-image: url('https://media.istockphoto.com/id/1393890856/photo/real-estate-agent-giving-the-keys-of-his-new-house-to-a-man.jpg?s=612x612&w=0&k=20&c=qsWuH9hDYdWuB2T8C5i3k-ewVpJB1zMjA_Z2Zxglcc8=');
   background-size: cover;
 }
 
+
+
 .overlay {
-  /* background: rgba(0, 0, 0, 0.5); */
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1; /* Ensures the overlay appears above the background */
   padding: 20px;
   border-radius: 10px;
   text-align: center;

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect} from 'react';
-import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header'; // Import the Header component
 import Footer from './components/Footer'; // Import the Footer component
@@ -8,13 +8,19 @@ import Home from './pages/Home';         // Import the Home component
 import Compare from './pages/Compare';   
 import Properties from './pages/Properties';
 import PropertyPage from './components/PropertyPage';  // Import PropertyPage
-import Login from './components/Login';
-import Signup from './components/Signup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import propertiesData from './data/propertiesData';
-import ProtectedRoute from './components/ProtectedRoute';
-import DevelopersPage from './components/DevelopersPage';
-//import developersRoutes from './backend/routes/developersRoutes';
+import LoginPage from './pages/LoginPage';
+import DeveloperPage from './pages/DeveloperPage';
+
+const isAuuthenticated =() => {
+  return !!localStorage.getItem('token');
+};
+
+const ProtectedRoute =({ children}) => {
+  return isAuuthenticated() ? children : <Navigate to="/login" />;
+}
+
 
 function App() {
   const [compareList, setCompareList] = useState(() => {
@@ -37,7 +43,7 @@ function App() {
 
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>  {/* Wrap everything inside BrowserRouter */}
+    <Router>  {/* Wrap everything inside Router */}
       <div className="App">
         {/* Render the common Header across all pages */}
         <Header /> 
@@ -47,23 +53,23 @@ function App() {
           <Route path="/" element={<Home />} />  
           <Route path="/properties" element={<Properties properties={propertiesData} addToCompare={addToCompare} compareList={compareList} />} />  
           <Route path="/compare" element={<Compare compareList={compareList} setCompareList={setCompareList} />} />  
-          <Route path="/login" element={<Login />} /> {/* Route for Login */}
-          <Route path="/signup" element={<Signup />} />
           {/* Add route for individual property pages */}
           <Route path="/property/:id" element={<PropertyPage />} />
-          {/* Protect the Developers Page route */}
-          <Route
-          path="/developers"element={
-            <ProtectedRoute>
-              <DevelopersPage />
-            </ProtectedRoute>
-          } />
 
+          <Route path="/login" element={<LoginPage />} /> {/* Route for Login */}
+          
+          <Route
+            path="/developer"
+            element={<ProtectedRoute><DeveloperPage /></ProtectedRoute>} // Redirect to login if not logged in or OTP not verified , if all is good then render the DevelopersPage
+          />
+
+          
+          <Route path="*" element={<Navigate to="/" />} /> {/* Redirect to Home for any undefined routes */}
         </Routes>
 
         <Footer /> {/* Render the common Footer across all pages */}
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 

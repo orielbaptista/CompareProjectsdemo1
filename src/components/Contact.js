@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Contact.css'
+import propertiesData from '../data/propertiesData';
 
 function Contact ()  {
   // State to manage form data
@@ -8,8 +9,26 @@ function Contact ()  {
     lastName: '',
     email: '',
     mobile: '',
-    message: ''
+    city: '',
+    locality: '',
+    cost: ''
   });
+
+  // State to store unique values for city, locality, and cost
+  const [cities, setCities] = useState([]);
+  const [localities, setLocalities] = useState([]);
+  const [costs, setCost] = useState([]);
+
+  // Effect to extract unique cities, localities, and cost
+  useEffect(() => {
+    const uniqueCities = [...new Set(propertiesData.map((property) => property.city))];
+    const uniqueLocalities = [...new Set(propertiesData.map((property) => property.locality))];
+    const uniqueCosts = [...new Set(propertiesData.map((property) => property.cost))];
+
+    setCities(uniqueCities);
+    setLocalities(uniqueLocalities);
+    setCost(uniqueCosts);
+  }, []);
 
   // Handle input change
   const handleChange = (e) => {
@@ -66,6 +85,46 @@ function Contact ()  {
                 onChange={handleChange}
                 required
               />
+
+
+
+              {/* Dropdown for City */}
+            <label htmlFor="city">City</label>
+            <select
+              id="city"
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select City</option>
+              {cities.map((city, index) => (
+                <option key={index} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+
+            {/* Dropdown for Locality */}
+            <label htmlFor="locality">Locality</label>
+            <select
+              id="locality"
+              name="locality"
+              value={formData.locality}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Locality</option>
+              {localities.map((locality, index) => (
+                <option key={index} value={locality}>
+                  {locality}
+                </option>
+              ))}
+            </select>
+
+            {/* Dropdown for Price */}
+            <label htmlFor="cost">Price</label>
+            
 
               
 

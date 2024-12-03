@@ -31,7 +31,7 @@ function Compare({ compareList, setCompareList }) {
               property={property} 
               addToCompare={() => {}} // Disable compare button in Compare page
               onRemove={removePropertyCard} // Pass the remove function
-              //cardType="compare" //pass compare specific class
+              cardType="compare" 
               
             />
           ))

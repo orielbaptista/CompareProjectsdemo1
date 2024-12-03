@@ -1,35 +1,47 @@
-import React, { useState } from 'react';
-import './HeroSection.css'; // Assuming styles are in this file
+import React from "react";
+import "./HeroSection.css"; // CSS file
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearchLocation, faHandshake, faChartLine, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 
 const HeroSection = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  // Toggle function to handle dropdown reveal
-  const toggleParagraph = () => {
-    setIsActive(!isActive);
-  };
+  const cards = [
+    {
+      icon: faSearchLocation,
+      title: "Comprehensive Listings",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Discover properties that suit your preferences.",
+    },
+    {
+      icon: faHandshake,
+      title: "Trusted Agents",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Work with certified professionals.",
+    },
+    {
+      icon: faChartLine,
+      title: "Market Insights",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Stay ahead with accurate market trends.",
+    },
+    {
+      icon: faShieldAlt,
+      title: "Secure Transactions",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enjoy safe and secure property dealings.",
+    },
+  ];
 
   return (
-    <div className='contain'>
-      <section className="hero-section">
-        <div className="hero-content">
-          <h1>Your Dream Property Awaits</h1>
-          <p>Explore the finest properties designed to suit your needs.</p>
-          <div className="arrow-container" onClick={toggleParagraph}>
-            <span className="down-arrow">{isActive ? '▲' : '▼'}</span>
+    <section className="why-choose-us">
+      <h2 className="section-title">Why Choose Us</h2>
+      <div className="card-container">
+        {cards.map((card, index) => (
+          <div className="card" key={index}>
+            <div className="icon">
+              <FontAwesomeIcon icon={card.icon} />
+            </div>
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
           </div>
-        </div>
-      </section>
-
-      {/* Paragraph content section that toggles based on isActive */}
-      <section className={`hidden-content ${isActive ? 'active' : ''}`} id="hiddenParagraph">
-        <p>
-          At our platform, you’ll find a wide variety of properties that match your unique
-          preferences—whether you’re looking for an urban apartment or a serene countryside villa.
-          Start your journey by exploring our listings.
-        </p>
-      </section>
-    </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

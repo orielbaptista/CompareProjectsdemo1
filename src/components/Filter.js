@@ -1,87 +1,145 @@
 import React, { useState } from 'react';
 import './Filter.css'; // Create this CSS file for styling
+import Select from 'react-select';
+//import makeAnimated from 'react-select/animated';
+import propertiesData from '../data/propertiesData';
 
 
+const Filter = ({ handleSelectChanges }) => {
+    const [selectedCities, setSelectedCities] = useState([]);
+    const [selectedPropertyType, setSelectedPropertyType] = useState(null);
+    const [selectedBHK, setSelectedBHK] = useState([]);
+    const [selectedLocality, setSelectedLocality] = useState([]);
 
-const Filter = ({ applyFilters }) => {
-    const [budget, setBudget] = useState([1000, 5000]);
-    const [propertyType, setPropertyType] = useState("");
-    const [bhk, setBhk] = useState("");
-    const [postedBy, setPostedBy] = useState("");
-    const [showMoreFilters, setShowMoreFilters] = useState(false);
+    const citiesOptions = [
+        { value: 'Mumbai', label: 'Mumbai' },
+        { value: 'Delhi', label: 'Delhi' },
+        { value: 'Panaji', label: 'Goa, Panaji' },
+    ];
 
-    // Handle slider change
-    const handleBudgetChange = (e) => {
-        const { name, value } = e.target;
-        setBudget(prev => name === 'min' ? [value, prev[1]] : [prev[0], value]);
+    const typesOptions = [
+        { value: 'house', label: 'House' },
+        { value: 'villa', label: 'Villa' },
+        { value: 'apartment', label: 'Apartment' },
+    ];
+
+    const bhkOptions = [
+        { value: '1', label: '1 BHK' },
+        { value: '2', label: '2 BHK' },
+        { value: '3', label: '3 BHK' },
+        { value: '4', label: '4 BHK' },
+    ];
+
+    const localityOptions = [
+        { value: "Andheri West", label: 'Andheri West' },
+        { value: "Bandra West", label: 'Bandra West' },
+        { value: "Miramar", label: 'Miramar' },
+    ];
+
+    const handleCityChange = (selectedOption) => {
+        console.log('Selected Cities:', selectedOption);
+        setSelectedCities(selectedOption);
+        handleSelectChanges({
+            cities: selectedOption,
+            type: selectedPropertyType,
+            bhk: selectedBHK,
+            locality: selectedLocality,
+        });
     };
 
-    // Apply filters and close filter options
-    const handleApplyFilters = () => {
-        applyFilters({
-            budget,
-            propertyType,
-            bhk,
-            postedBy
+    const handlePropertyTypeChange = (selectedOption) => {
+        console.log('Selected Property Type:', selectedOption);
+        setSelectedPropertyType(selectedOption);
+        handleSelectChanges({
+            cities: selectedCities,
+            type: selectedOption,
+            bhk: selectedBHK,
+            locality: selectedLocality,
+        });
+    };
+
+    const handleBHKChange = (selectedOption) => {
+        console.log('Selected Bhk:', selectedOption);
+        setSelectedBHK(selectedOption);
+        handleSelectChanges({
+            cities: selectedCities,
+            type: selectedPropertyType,
+            bhk: selectedOption,
+            locality: selectedLocality,
+        });
+    };
+
+    const handleLocalityChange = (selectedOption) => {
+        console.log('Selected Locality:', selectedOption);
+        setSelectedLocality(selectedOption);
+        handleSelectChanges({
+            cities: selectedCities,
+            type: selectedPropertyType,
+            bhk: selectedBHK,
+            locality: selectedOption,
         });
     };
 
     return (
         <div className="filter-container">
             <h3>Filters</h3>
-            
-            {/* Budget Slider */}
+
             <div className="filter-item">
-                <label>Budget:</label>
-                <input type="range" name="min" min="1000" max="10000" value={budget[0]} onChange={handleBudgetChange} />
-                <input type="range" name="max" min="1000" max="10000" value={budget[1]} onChange={handleBudgetChange} />
-                <span>{`$${budget[0]} - $${budget[1]}`}</span>
+                <label>Cities:</label>
+                <Select
+                    isMulti
+                    options={citiesOptions}
+                    value={selectedCities}
+                    onChange={handleCityChange}
+                    placeholder="Select Cities"
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                />
             </div>
 
-            {/* Property Type Dropdown */}
             <div className="filter-item">
-                <label>House/Villa:</label>
-                <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)}>
-                    <option value="">Select Type</option>
-                    <option value="house">House</option>
-                    <option value="villa">Villa</option>
-                    <option value="apartment">Apartment</option>
-                </select>
+                <label>Property Type:</label>
+                <Select
+                    options={typesOptions}
+                    value={selectedPropertyType}
+                    onChange={handlePropertyTypeChange}
+                    placeholder="Select Property Type"
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                />
             </div>
 
-            {/* BHK Dropdown */}
             <div className="filter-item">
                 <label>BHK:</label>
-                <select value={bhk} onChange={(e) => setBhk(e.target.value)}>
-                    <option value="">Select BHK</option>
-                    <option value="1">1 BHK</option>
-                    <option value="2">2 BHK</option>
-                    <option value="3">3 BHK</option>
-                    <option value="4">4 BHK</option>
-                    <option value="5">5 BHK</option>
-                    <option value="6">5 BHK</option>
-                </select>
+                <Select
+                    options={bhkOptions}
+                    value={selectedBHK}
+                    isMulti
+                    onChange={handleBHKChange}
+                    placeholder="Select BHK"
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                />
             </div>
 
-            {/* Posted By Dropdown */}
             <div className="filter-item">
-                <label>Posted By:</label>
-                <select value={postedBy} onChange={(e) => setPostedBy(e.target.value)}>
-                    <option value="">Select</option>
-                    <option value="agent">Agent</option>
-                    <option value="individual">Individual</option>
-                </select>
+                <label>Locality:</label>
+                <Select
+                    options={localityOptions}
+                    value={selectedLocality}
+                    isMulti
+                    onChange={handleLocalityChange}
+                    placeholder="Select Locality"
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                />
             </div>
+            <button className='clear-btn' >Clear Filters</button>
 
-            {/* More Filters */}
-            <button onClick={() => setShowMoreFilters(!showMoreFilters)}>
-                More Filters
-            </button>
 
-            {/* Apply Filters */}
-            <button onClick={handleApplyFilters}>Done</button>
         </div>
     );
 };
+
 
 export default Filter;

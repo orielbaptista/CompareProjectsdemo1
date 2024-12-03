@@ -1,28 +1,31 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/authRoutes');
 const dotenv = require('dotenv');
+const authRoutes = require('./routes/auth');
 const cors = require('cors');
-const path = require('path'); //serve  for static files
+const jwt = require('jsonwebtoken');
 
-//const developersRoutes = require('./routes/developersRoutes');
 
 dotenv.config();
 
 const app = express();
-app.use(express.json());// middleware to parse json bodies
-app.use(cors());//middleware to allow cross-origin requests
+app.use(express.json());
+
+//use cors as middleware
+app.use(cors({
+  origin: 'http://localhost:3000',//Replace with the URL of your frontend application
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],// allow specific methods if needed
+  allowedHeaders: ['Content-Type', 'Authorization'],// allow specific headers if needed
+}));
 
 
 app.get('/', (req, res) => res.send('server running!'));// route to test server
 
-//routes
-//app.use('/routes/authRoutes', authRoutes);
-// Use the authRoutes for authentication-related endpoints
+//import routes 
+//use the auth routes
 app.use('/api/auth', authRoutes);
 
-//protected route example
-//app.use('/api/developers',developersRoutes);
+
 
 //connect to database
 mongoose.connect(process.env.MONGODB_URI, {
@@ -33,9 +36,20 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch((error) => console.error('MongoDB connection error:', error));
 
-// Serve static files from the React app
+// Protected Developer Page Route
+app.get('/api/developer', (req, res) => {
+    const token = req.headers.authorization;
+  
+    if (!token) return res.status(403).json({ message: 'No token provided' });
+  
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) return res.status(401).json({ message: 'Invalid token' });
+  
+      res.json({ message: 'Welcome to your profile', developerId: decoded.developerId });
+    });
+  });
 
 
 //start server
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

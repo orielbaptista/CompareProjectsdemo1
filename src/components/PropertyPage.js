@@ -20,11 +20,13 @@ import {
   faBus,
 } from '@fortawesome/free-solid-svg-icons';
 import './PropertyPage.css';
-import Carousel from './Carousel';
+import Carousel from './CarouselforPagetab';
 import CaroforPage
  from './CaroforPage';
 
 function PropertyPage() {
+  
+  
   const { id } = useParams();
   const property = propertiesData.find((property) => property.id === parseInt(id));
   const [activeTab, setActiveTab] = useState('overview');
@@ -55,6 +57,8 @@ function PropertyPage() {
     'Public Transport': faBus,
     'Private Garden': faTree,
   };
+
+  console.log('property Data:', property);
 
   return (
     <div className="property-page">
@@ -121,7 +125,7 @@ function PropertyPage() {
       <div className="tab-content">
         {activeTab === 'overview' && (
           <div className="tab-section">
-            <p>Bedrooms: {property.bedrooms}</p>
+            <p>Bedrooms: {property.bhk}</p>
             <p>Bathrooms: {property.bathrooms}</p>
             <p>Parking: {property.parkings}</p>
             <p>Area: {property.area} Sqft</p>

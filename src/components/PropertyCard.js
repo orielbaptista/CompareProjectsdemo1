@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faWallet, faBed, faCouch, faRulerCombined, faCodeCompare, faPhone, faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons';
 
-function PropertyCard({ property, addToCompare, goToComparePage, onRemove }) {
+function PropertyCard({ property, addToCompare, goToComparePage, onRemove, cardType }) {
   const navigate = useNavigate();
 
   const handleCompare = () => {
@@ -25,7 +25,8 @@ function PropertyCard({ property, addToCompare, goToComparePage, onRemove }) {
 
 
   return (
-    <div className="property-card" onClick={handleCardClick} data-id={property.id} data-location={property.location} data-price={property.cost} data-bedrooms={property.bedrooms} data-type={property.type}>
+    <div className={`property-card ${cardType === 'compare' ? 'compare-card' : "default-card"}`}  
+    onClick={handleCardClick} data-id={property.id} data-location={property.location} data-price={property.cost} data-bhk={property.bhk} data-type={property.type}>
       {/* Close Button */}
       {onRemove && (
         <button className="close-button" onClick={(e) => { e.stopPropagation(); onRemove(property.id); }}>
@@ -57,7 +58,7 @@ function PropertyCard({ property, addToCompare, goToComparePage, onRemove }) {
           </div>
           <div className="info-item">
             <FontAwesomeIcon className='custom-icon' icon={faBed} />
-            <span>{property.bedrooms} bd.</span>
+            <span>{property.bhk} bd.</span>
           </div>
           <div className="info-item">
             <FontAwesomeIcon className='custom-icon' icon={faBed} />
@@ -68,18 +69,28 @@ function PropertyCard({ property, addToCompare, goToComparePage, onRemove }) {
             <span>{property.area} Sq.</span>
           </div>
         </div>
+
+
         <div className="actions">
-          <button className="compare-action-button" onClick={(e) => {
-            e.stopPropagation();
-            addToCompare(property); 
-            handleCompare();
-          }}>
-            <FontAwesomeIcon className='compare-custom-btn-icon' icon={faCodeCompare} />Compare
-          </button>
+          {cardType !== 'compare' && (
+            <button 
+              className="compare-action-button" 
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCompare();
+              }}
+            >
+              <FontAwesomeIcon className="compare-custom-btn-icon" icon={faCodeCompare} />
+              Compare
+            </button>
+          )}
           <button className="contact-action-button">
-            <FontAwesomeIcon className='contact-custom-btn-icon' icon={faPhone} />Contact Seller
+            <FontAwesomeIcon className="contact-custom-btn-icon" icon={faPhone} />
+            Contact Seller
           </button>
         </div>
+
+
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 // Carousel.js
 import React, { useState } from 'react';
-import './Carousel.css';
+import './CarouselforPagetab.css';
 
 const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
